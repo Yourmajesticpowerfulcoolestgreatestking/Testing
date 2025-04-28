@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambar Lingkaran</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000;"></canvas>
+    
+    <script>
+        function drawCircle(x1, y1, x2, y2) {
+            let canvas = document.getElementById("myCanvas");
+            let ctx = canvas.getContext("2d");
+            
+            let dx = x2 - x1;
+            let dy = y2 - y1;
+            let R = Math.sqrt(dx * dx + dy * dy);
+            let peri = 2 * Math.PI * R;
+            
+            ctx.beginPath();
+            for (let d = 0; d <= 360; d += (360 / peri)) {
+                let xx = R * Math.cos(d * Math.PI / 180);
+                let yy = R * Math.sin(d * Math.PI / 180);
+                ctx.fillRect(x1 + xx, y1 + yy, 1, 1);
+            }
+            ctx.stroke();
+        }
+        
+        drawCircle(250, 250, 350, 250);
+    </script>
+</body>
+</html>
